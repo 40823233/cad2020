@@ -1,16 +1,64 @@
 <h1>First</h1>
+<p></p>
+<h1>每周作業</h1>
+<h2>w1</h2>
+<h2>w2</h2>
+<h2>w3</h2>
+<h2>w4</h2>
+<h2>w5</h2>
+<h2>w6</h2>
+<h2>w7</h2>
+<h2>w8</h2>
 <h1>倉庫</h1>
-<p>這裡放了網站創立時出現的東西</p>
+<p>原始網站刪除的東西還有部分筆記在此</p>
 <p>此內容管理系統以 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 作為 submodule 運作, 可以選定對應的版本運作, cmsimde 可以持續改版, 不會影響之前設為 submodule, 使用舊版 cmsimde 模組的內容管理相關運作.</p>
+<h4>倉儲複製</h4>
+<p><span>git clone --recurse-submodules<span> </span></span><span><span><a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a><a href="https://github.com/mdecourse/newcms.git"></a></span></span></p>
+<p>這是還沒有設定使用者時的代碼。</p>
+<p><span>git clone --recurse-submodules<span> </span></span><span><span><a href="https://github.com/40823233/cp2019.git">https://github.com/40823233/cp2019.git</a><a href="https://github.com/mdecourse/newcms.git"></a></span></span></p>
+<p><span><span>這是我的倉儲的複製方法。</span></span></p>
+<h4>上傳三連</h4>
+<p>git add .</p>
+<p>git commit -m  "add repositere link"</p>
+<p>git push</p>
+<p>然後打帳號密碼，如果中途有錯的話cmd上面會告訴你叫你打一些東西，好了之後重複上述動作應該就行了。</p>
 <h4>利用 cmsimde 建立靜態網誌方法:</h4>
 <p>1. 在 github 建立倉儲, git clone 到近端</p>
 <p>2. 參考 <a href="https://github.com/mdecourse/newcms">https://github.com/mdecourse/newcms</a>, 加入除了 cmsimde 目錄外的所有內容</p>
-<p>以 git submodule add <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> cmsimde</p>
+<p><span><span>以git子模塊添加 <span> </span></span></span><a href="https://github.com/mdecourse/cmsimde"><span><span>https://github.com/mdecourse/cmsimde</span></span></a><span><span><span> </span> cmsimde</span></span></p>
 <p>建立 cmsimde 目錄, 並從 github 取下子模組內容.</p>
 <p>3.在近端維護時, 更換目錄到倉儲中的 cmsimde, 以 python wsgi.py 啟動近端網際伺服器.</p>
 <p>動態內容編輯完成後, 以 generate_pages 轉為靜態內容, 以 git add commit 及 push 將內容推到遠端.</p>
 <p>4. 之後若要以 git clone 取下包含 submodule 的所有內容, 執行:</p>
-<p>git clone --recurse-submodules <a href="https://github.com/mdecourse/newcms.git">https://github.com/mdecourse/newcms.git</a></p>
+<p><span><span>git clone --recurse-submodules<span> </span></span></span><a href="https://github.com/mdecourse/newcms.git"><span><span>https://github.com/mdecourse/newcms.git</span></span></a></p>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 的開發, 可以在一個目錄中放入 cmsimde, 然後將 up_dir 中的內容放到與 cmsimde 目錄同位階的地方, 使用 command 進入 cmsimde 目錄, 執行 python wsgi.py, 就可以啟動, 以瀏覽器 https://localhost:9443 就可以連接, 以 admin 作為管理者密碼, 就可以登入維護內容.</p>
 <p>cmsimde 的開發採用 Leo Editor, 開啟 cmsimde 目錄中的 cmsimde.leo 就可以進行程式修改, 結束後, 若要保留網際內容, 只要將 cmsimde 外部的內容倒回 up_dir 目錄中即可後續對 cmsimde 遠端倉儲進行改版.</p>
 <p>init.py 位於  up_dir 目錄, 可以設定 site_title 與 uwsgi 等變數.</p>
+<section class="present" data-markdown="" data-markdown-parsed="true">
+<h4 id="-markdown-">利用 MARKDOWN 寫投影片</h4>
+<p>以下利用 Markdown 格式展示 Python 程式碼:</p>
+<pre><code class="hljs xl"># use threading <span class="hljs-built_in">and</span> subprocess to threading the make process
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> subprocess
+<span class="hljs-keyword">import</span> threading
+
+def domake():
+
+    <span class="hljs-built_in">path</span> = <span class="hljs-string">"../exposed/api/exposed"</span>
+    ubuntu = <span class="hljs-string">"../Ubuntu"</span>
+
+    # create obj <span class="hljs-built_in">path</span>
+
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">not</span> os.<span class="hljs-built_in">path</span>.exists(<span class="hljs-built_in">path</span>+<span class="hljs-string">"/../obj"</span>):
+        os.makedirs(<span class="hljs-built_in">path</span>+<span class="hljs-string">"/../obj"</span>)
+
+    subprocess.call([<span class="hljs-string">"make"</span>, <span class="hljs-string">"clean"</span>], cwd=<span class="hljs-built_in">path</span>)
+    subprocess.call(<span class="hljs-string">"make"</span>, cwd=<span class="hljs-built_in">path</span>)
+    subprocess.call([<span class="hljs-string">"cp"</span>, <span class="hljs-string">"{libslvs.so, _slvs.so, slvs.py}"</span>, ubuntu], cwd=<span class="hljs-built_in">path</span>)
+    subprocess.call([<span class="hljs-string">"python3"</span>, <span class="hljs-string">"circle_ex.py"</span>], cwd=<span class="hljs-built_in">path</span>+<span class="hljs-string">"/"</span>+ubuntu)
+
+make = threading.Thread(target=domake)
+make.start()<br/><br/><span face="Lato" style="font-family: Lato;"><span style="white-space: normal;"> </span></span>使用 iframe 導入影片<br/><br/>導入影片 template<br/><br/></code></pre>
+</section>
+<section aria-hidden="true" class="future" data-markdown="" data-markdown-parsed="true" hidden=""></section>
+<p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="492" mozallowfullscreen="mozallowfullscreen" src="https://player.vimeo.com/video/183950627" webkitallowfullscreen="webkitallowfullscreen" width="640"></iframe></p>
